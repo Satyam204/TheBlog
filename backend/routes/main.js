@@ -52,37 +52,41 @@ router.post('/add-post', async (req, res) => {
   }
 });
 
+router.get('/edit-post/:id', async (req, res) => {
+  try {
+    const data = await Post.findOne({ _id: req.params.id });
+    res.render('edit-post',{data})
+  } catch (error) {
+    console.log(error);
+  }
 
+});
+router.put('/edit-post/:id', async (req, res) => {
+  try {
 
+    await Post.findByIdAndUpdate(req.params.id, {
+      title: req.body.title,
+      body: req.body.body,
+      updatedAt: Date.now()
+    });
 
+    res.redirect(`/edit-post/${req.params.id}`);
 
+  } catch (error) {
+    console.log(error);
+  }
 
-// router.put('/edit-post/:id', async (req, res) => {
-//   try {
+});
 
-//     await Post.findByIdAndUpdate(req.params.id, {
-//       title: req.body.title,
-//       body: req.body.body,
-//       updatedAt: Date.now()
-//     });
+router.delete('/delete-post/:id', async (req, res) => {
 
-//     res.redirect(`/edit-post/${req.params.id}`);
+  try {
+    await Post.deleteOne( { _id: req.params.id } );
+    res.redirect('/');
+  } catch (error) {
+    console.log(error);
+  }
 
-//   } catch (error) {
-//     console.log(error);
-//   }
-
-// });
-
-// router.delete('/delete-post/:id', async (req, res) => {
-
-//   try {
-//     await Post.deleteOne( { _id: req.params.id } );
-//     res.redirect('/');
-//   } catch (error) {
-//     console.log(error);
-//   }
-
-// });
+});
 
 module.exports = router;
