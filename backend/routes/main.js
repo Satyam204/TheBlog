@@ -8,8 +8,20 @@ router.get('', async (req,res)=>{
     res.render('index', { data });
   } catch (error) {
     console.log(error);
+  } 
+});
+
+router.get('/post/:id', async (req, res) => {
+  try {
+    let slug = req.params.id;
+
+    const data = await Post.findById({ _id: slug });
+    
+    res.render('post', {data});
+  } catch (error) {
+    console.log(error);
   }
-   
+
 });
 
 router.get('/about',(req,res)=>{
