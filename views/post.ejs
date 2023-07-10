@@ -1,5 +1,14 @@
 <h1 class="post_title"><%= data.title %></h1>
 <hr>
 <p><%= data.createdAt.toDateString() %></p>
- <br>
+ 
+ <div class="modefiying-posts" >
+        <a href="/edit-post/<%= data._id %>">Edit</a>
+          
+        <form action="/delete-post/<%= data._id %>?_method=DELETE" method="POST">
+          <input type="submit" value="Delete" >
+        </form>
+
+      </div>
+<br>
 <article class="article"><%= data.body %></article>

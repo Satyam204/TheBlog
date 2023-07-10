@@ -28,4 +28,61 @@ router.get('/about',(req,res)=>{
     res.render('about');
 });
 
+
+
+router.get('/add-post', async (req, res) => {
+  try {
+    res.render('add-post');
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+router.post('/add-post', async (req, res) => {
+  try {
+    const newPost = new Post({
+      title: req.body.title,
+      body: req.body.body
+    });
+
+    await Post.create(newPost);
+    res.redirect('/');
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+
+
+
+
+
+// router.put('/edit-post/:id', async (req, res) => {
+//   try {
+
+//     await Post.findByIdAndUpdate(req.params.id, {
+//       title: req.body.title,
+//       body: req.body.body,
+//       updatedAt: Date.now()
+//     });
+
+//     res.redirect(`/edit-post/${req.params.id}`);
+
+//   } catch (error) {
+//     console.log(error);
+//   }
+
+// });
+
+// router.delete('/delete-post/:id', async (req, res) => {
+
+//   try {
+//     await Post.deleteOne( { _id: req.params.id } );
+//     res.redirect('/');
+//   } catch (error) {
+//     console.log(error);
+//   }
+
+// });
+
 module.exports = router;

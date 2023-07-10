@@ -158,7 +158,23 @@ textarea {
     text-decoration: none;
   }
 
+  .main_title
+  {
+    display: flex;
+  justify-content: space-between;
+  align-items: center;
+  }
   .post_title:hover
   {
     color: rgb(92, 63, 24);
+  }
+  
+
+
+  .modefiying-posts {
+    padding: 0;
+    margin: 0;
+    justify-content: flex-end;
+    justify-content: space-between;
+    display: flex; 
   }
