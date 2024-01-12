@@ -72,7 +72,7 @@ router.put('/edit-post/:id', async (req, res) => {
       updatedAt: Date.now()
     });
 
-    res.redirect(`/edit-post/${req.params.id}`);
+    res.redirect(`/post/${req.params.id}`);
 
   } catch (error) {
     console.log(error);
