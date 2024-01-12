@@ -42,6 +42,7 @@ router.post('/add-post', async (req, res) => {
   try {
     const newPost = new Post({
       title: req.body.title,
+      author: req.body.author,
       body: req.body.body
     });
 
@@ -66,6 +67,7 @@ router.put('/edit-post/:id', async (req, res) => {
 
     await Post.findByIdAndUpdate(req.params.id, {
       title: req.body.title,
+      author: req.body.author,
       body: req.body.body,
       updatedAt: Date.now()
     });
