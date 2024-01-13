@@ -19,6 +19,8 @@ app.set('layout', './layouts/main');
 app.set('view engine', 'ejs');
 
 app.use('/', require('./backend/routes/main'));
+app.use('/', require('./backend/routes/admin'));
+
 
 app.listen(PORT,()=>
 {
