@@ -54,7 +54,7 @@ router.get('/admin/post/:id', async (req, res) => {
 
         const data = await Post.findById({ _id: slug });
 
-        res.render('./admin/post', { data });
+        res.render('./admin/post', { data , layout: adminLayout});
     } catch (error) {
         console.log(error);
     }
@@ -64,7 +64,7 @@ router.get('/admin/post/:id', async (req, res) => {
 router.get('/admin/edit-post/:id', async (req, res) => {
     try {
         const data = await Post.findOne({ _id: req.params.id });
-        res.render('./admin/edit-post', { data })
+        res.render('./admin/edit-post', { data , layout: adminLayout})
     } catch (error) {
         console.log(error);
     }
