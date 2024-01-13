@@ -1,9 +1,14 @@
-<a href="/" class="btn btn-outline-dark btn-sm">👈Back</a>
+<a href="/admin/dashboard" class="btn btn-outline-dark btn-sm">👈Back</a>
 <div class="main-title">
-  <h2>Edit Post</h2>
+  <h2>Admin Review</h2>
+
+  <form action="/admin/delete-post/<%= data._id %>?_method=DELETE" method="POST">
+    <input type="submit" value="Delete" class="btn-delete btn">
+  </form>
+
 </div>
 
-<form action="/edit-post/<%= data._id %>?_method=PUT" method="POST">
+<form action="/admin/edit-post/<%= data._id %>?_method=PUT" method="POST">
 
   <label for="title"><b>Title</b></label>
   <input type="text" placeholder="Post Title" name="title" value="<%= data.title %>">

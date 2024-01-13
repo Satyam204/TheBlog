@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Post=require('../server/models/Post');
+const { route } = require('./admin');
 
 router.get('', async (req,res)=>{
       try {
@@ -90,5 +91,18 @@ router.delete('/delete-post/:id', async (req, res) => {
   }
 
 });
+
+router.get('/feedback',(req,res)=>
+{
+  try
+  {
+    res.render('feedback');
+  }catch(error)
+  {
+    console.log(error)
+  }
+})
+
+
 
 module.exports = router;
